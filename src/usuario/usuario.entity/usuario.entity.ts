@@ -1,6 +1,6 @@
+import { DireccionUsuarionEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
 import { ImagenUsuarioEntity } from 'src/imagenUsuario/imagenUsuario.entity/imagenUsuario.entity';
-import { UbicacionEntity } from 'src/ubicacion/ubicacion.entity/ubicacion.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class UsuarioEntity {
@@ -29,5 +29,8 @@ export class UsuarioEntity {
     @OneToOne(() => ImagenUsuarioEntity, imagenUsuario => imagenUsuario.usuario)
     @JoinColumn()
     imagen: ImagenUsuarioEntity;
+
+    @OneToMany(() => DireccionUsuarionEntity, direccionUsuario => direccionUsuario.usuario)
+    direccion: DireccionUsuarionEntity[];
 
 }
