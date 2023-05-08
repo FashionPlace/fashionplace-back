@@ -18,7 +18,7 @@ export class CarritoProductoEntity {
     precio: number;
     
     @ManyToOne(() => CarritoEntity, carrito => carrito.carritoProductos)
-    compra: CarritoEntity;
+    carrito: CarritoEntity;
     
     @ManyToMany(() => ProductoEntity, producto => producto.carritoProductos)
     producto: ProductoEntity[];

@@ -3,7 +3,7 @@ import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 import { Column, Entity, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class ColeccionesEntity {
+export class ColeccionEntity {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;
@@ -15,7 +15,7 @@ export class ColeccionesEntity {
     descripcion: string;
 
     @OneToOne(() => ImagenColeccionEntity, imagenColeccion => imagenColeccion.coleccion)
-    imagenColeccion: ImagenColeccionEntity;
+    imagen: ImagenColeccionEntity;
 
     @ManyToMany(() => ProductoEntity, producto => producto.colecciones)
     productos: ProductoEntity[];

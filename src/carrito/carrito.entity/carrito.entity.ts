@@ -11,7 +11,7 @@ export class CarritoEntity {
     @Column()
     fecha: Date;
 
-    @OneToMany(() => CarritoProductoEntity, carritoProd => carritoProd.compra)
+    @OneToMany(() => CarritoProductoEntity, carritoProducto => carritoProducto.carrito)
     carritoProductos: CarritoProductoEntity[];
 
     @OneToOne(() => CompradorEntity, comprador => comprador.carrito)

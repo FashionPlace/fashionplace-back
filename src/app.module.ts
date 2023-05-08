@@ -8,9 +8,9 @@ import { SucursalModule } from './sucursal/sucursal.module';
 import { MetodoContactoModule } from './metodo-contacto/metodo-contacto.module';
 import { ImagenModule } from './imagen/imagen.module';
 import { ProductoModule } from './producto/producto.module';
-import { ComentariosModule } from './comentarios/comentarios.module';
-import { ColeccionesModule } from './colecciones/colecciones.module';
-import { CaracteristicasModule } from './caracteristicas/caracteristicas.module';
+import { ComentarioModule } from './comentario/comentario.module';
+import { ColeccionesModule } from './coleccion/coleccion.module';
+import { CaracteristicaModule } from './caracteristica/caracteristica.module';
 import { TagModule } from './tag/tag.module';
 import { CarritoModule } from './carrito/carrito.module';
 import { CarritoProductoModule } from './carritoProducto/carritoPoducto.module';
@@ -19,12 +19,12 @@ import { VisitaModule } from './visita/visita.module';
 import { CompraModule } from './compra/compra.module';
 import { CompradorModule } from './comprador/comprador.module';
 import { GraficaModule } from './grafica/grafica.module';
-import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
 import { ImagenColeccionModule } from './imagenColeccion/imagenColeccion.module';
+import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
 import { ImagenUsuarioModule } from './imagenUsuario/imagenUsuario.module';
 
 @Module({
-  imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ImagenModule, ProductoModule, ComentariosModule, ColeccionesModule, CaracteristicasModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenProductoModule, ImagenColeccionModule, ImagenUsuarioModule],
+  imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ProductoModule, ComentarioModule, ColeccionesModule, CaracteristicaModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenModule, ImagenProductoModule, ImagenColeccionModule, ImagenUsuarioModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -3,13 +3,13 @@ import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class ComentariosEntity {
+export class ComentarioEntity {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
-    comentario: string;
+    titulo: string;
     
     @Column()
     descripcion: string;
@@ -25,6 +25,5 @@ export class ComentariosEntity {
 
     @ManyToOne(() => CompradorEntity, comprador => comprador.comentarios)
     comprador: CompradorEntity;
-
 
 }

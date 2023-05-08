@@ -1,6 +1,5 @@
-import { join } from "path";
 import { CarritoEntity } from "src/carrito/carrito.entity/carrito.entity";
-import { ComentariosEntity } from "src/comentarios/comentarios.entity/comentarios.entity";
+import { ComentarioEntity } from "src/comentario/comentario.entity/comentario.entity";
 import { CompraEntity } from "src/compra/compra.entity/compra.entity";
 import { UsuarioEntity } from "src/usuario/usuario.entity/usuario.entity";
 import { VisitaEntity } from "src/visita/visita.entity/visita.entity";
@@ -19,7 +18,7 @@ export class CompradorEntity extends UsuarioEntity{
     @OneToMany(() => VisitaEntity, visita => visita.comprador)
     visitas: VisitaEntity[];
 
-    @OneToMany(() => ComentariosEntity, comentarios => comentarios.comprador)
-    comentarios: ComentariosEntity[];
+    @OneToMany(() => ComentarioEntity, comentarios => comentarios.comprador)
+    comentarios: ComentarioEntity[];
 
 }

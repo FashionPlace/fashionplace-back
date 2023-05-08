@@ -5,7 +5,7 @@ import { Entity, ManyToOne } from "typeorm";
 @Entity()
 export class ImagenUsuarioEntity extends ImagenEntity {
 
-    @ManyToOne(() => UsuarioEntity, usuario => usuario.imagenes)
+    @ManyToOne(() => UsuarioEntity, usuario => usuario.imagen)
     usuario: UsuarioEntity;
 
 }

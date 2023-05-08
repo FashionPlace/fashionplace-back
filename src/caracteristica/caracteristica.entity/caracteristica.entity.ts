@@ -1,9 +1,9 @@
 import { TagEntity } from "src/tag/tag.entity/tag.entity";
 import { ProductoEntity } from "../../producto/producto.entity/producto.entity";
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class CaracteristicasEntity {
+export class CaracteristicaEntity {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
@@ -13,8 +13,8 @@ export class CaracteristicasEntity {
     @Column()
     descripcion: string;
     
-    @ManyToOne(() => TagEntity, tag => tag.caracteristicas)
-    Tag: TagEntity;
+    @ManyToMany(() => TagEntity, tag => tag.caracteristicas)
+    tags: TagEntity[];
 
     @ManyToMany(() => ProductoEntity, producto => producto.caracteristicas)
     productos: ProductoEntity[];
