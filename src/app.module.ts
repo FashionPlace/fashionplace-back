@@ -22,9 +22,10 @@ import { GraficaModule } from './grafica/grafica.module';
 import { ImagenColeccionModule } from './imagenColeccion/imagenColeccion.module';
 import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
 import { ImagenUsuarioModule } from './imagenUsuario/imagenUsuario.module';
+import { DireccionUsuarioModule } from './direccionUsuario/direccionUsuario.module';
 
 @Module({
-  imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ProductoModule, ComentarioModule, ColeccionesModule, CaracteristicaModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenModule, ImagenProductoModule, ImagenColeccionModule, ImagenUsuarioModule],
+  imports: [UbicacionModule, DireccionUsuarioModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ProductoModule, ComentarioModule, ColeccionesModule, CaracteristicaModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenModule, ImagenProductoModule, ImagenColeccionModule, ImagenUsuarioModule],
   controllers: [AppController],
   providers: [AppService],
 })
