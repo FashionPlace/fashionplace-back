@@ -21,9 +21,10 @@ import { CompradorModule } from './comprador/comprador.module';
 import { GraficaModule } from './grafica/grafica.module';
 import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
 import { ImagenColeccionModule } from './imagenColeccion/imagenColeccion.module';
+import { ImagenUsuarioModule } from './imagenUsuario/imagenUsuario.module';
 
 @Module({
-  imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ImagenModule, ProductoModule, ComentariosModule, ColeccionesModule, CaracteristicasModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenProductoModule, ImagenColeccionModule],
+  imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ImagenModule, ProductoModule, ComentariosModule, ColeccionesModule, CaracteristicasModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule, GraficaModule, ImagenProductoModule, ImagenColeccionModule, ImagenUsuarioModule],
   controllers: [AppController],
   providers: [AppService],
 })
