@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ImagenColeccionController } from './imagen-coleccion.controller';
-import { ImagenColeccionService } from './imagen-coleccion.service';
+import { ImagenColeccionController } from './imagenColeccion.controller';
+import { ImagenColeccionService } from './imagenColeccion.service';
 
 @Module({
   controllers: [ImagenColeccionController],
