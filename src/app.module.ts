@@ -18,11 +18,10 @@ import { CompraProductoModule } from './compra-producto/compra-producto.module';
 import { VisitaModule } from './visita/visita.module';
 import { CompraModule } from './compra/compra.module';
 import { CompradorModule } from './comprador/comprador.module';
-import { CarritpService } from './carritp/carritp.service';
 
 @Module({
   imports: [UbicacionModule, UsuarioModule, EmpresaModule, SucursalModule, MetodoContactoModule, ImagenModule, ProductoModule, ComentariosModule, ColeccionesModule, CaracteristicasModule, TagModule, CarritoModule, CarritoProductoModule, CompraProductoModule, VisitaModule, CompraModule, CompradorModule],
   controllers: [AppController],
-  providers: [AppService, CarritpService],
+  providers: [AppService],
 })
 export class AppModule {}
