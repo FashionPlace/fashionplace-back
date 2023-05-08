@@ -1,8 +1,9 @@
 import { ColeccionEntity } from "src/coleccion/coleccion.entity/coleccion.entity";
-import { Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ImagenEntity } from "src/imagen/imagen.entity/imagen.entity";
+import { Entity, OneToOne } from "typeorm";
 
 @Entity()
-export class ImagenColeccionEntity {
+export class ImagenColeccionEntity extends ImagenEntity{
 
     @OneToOne(() => ColeccionEntity, coleccion => coleccion.imagen)
     coleccion: ColeccionEntity;
