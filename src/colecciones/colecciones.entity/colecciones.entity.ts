@@ -1,3 +1,4 @@
+import { ImagenColeccionEntity } from "src/imagenColeccion/imagenColeccion.entity/imagenColeccion.entity";
 import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 import { Column, Entity, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
