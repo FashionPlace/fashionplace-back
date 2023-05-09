@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { GraficaEntity } from "src/grafica/grafica.entity/grafica.entity";
 import { MetodoContactoEntity } from "src/metodo-contacto/metodo-contacto.entity/metodo-contacto.entity";
 import { SucursalEntity } from "src/sucursal/sucursal.entity/sucursal.entity";

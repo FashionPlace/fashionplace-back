@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { SucursalEntity } from "src/sucursal/sucursal.entity/sucursal.entity";
 import { UbicacionEntity } from "src/ubicacion/ubicacion.entity/ubicacion.entity";
 import { Entity, OneToOne } from "typeorm";

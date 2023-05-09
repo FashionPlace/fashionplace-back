@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { CompradorEntity } from 'src/comprador/comprador.entity/comprador.entity';
 import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';

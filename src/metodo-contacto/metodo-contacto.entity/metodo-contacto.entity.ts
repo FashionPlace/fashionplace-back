@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 

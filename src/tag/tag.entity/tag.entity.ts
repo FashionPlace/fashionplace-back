@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { CaracteristicaEntity } from 'src/caracteristica/caracteristica.entity/caracteristica.entity';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 

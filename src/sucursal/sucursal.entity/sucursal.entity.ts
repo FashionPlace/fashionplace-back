@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 import { UbicacionSucursalEntity } from 'src/ubicacionSucursal/ubicacionSucursal.entity/ubicacionSucursal.entity';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { CaracteristicaEntity } from 'src/caracteristica/caracteristica.entity/caracteristica.entity';
 import { CarritoProductoEntity } from 'src/carritoProducto/carritoProducto.entity/carritoProducto.entity';
 import { ColeccionEntity } from 'src/coleccion/coleccion.entity/coleccion.entity';

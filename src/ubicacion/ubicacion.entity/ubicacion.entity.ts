@@ -1,5 +1,4 @@
-import { SucursalEntity } from 'src/sucursal/sucursal.entity/sucursal.entity';
-import { UsuarioEntity } from 'src/usuario/usuario.entity/usuario.entity';
+/* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
