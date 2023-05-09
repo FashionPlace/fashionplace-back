@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CompraProductoService } from './compra-producto.service';
-import { CompraProductoController } from './compra-producto.controller';
+import { CompraProductoService } from './compraProducto.service';
+import { CompraProductoController } from './compraProducto.controller';
 
 @Module({
   providers: [CompraProductoService],

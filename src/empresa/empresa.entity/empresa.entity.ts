@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { GraficaEntity } from "src/grafica/grafica.entity/grafica.entity";
-import { MetodoContactoEntity } from "src/metodo-contacto/metodo-contacto.entity/metodo-contacto.entity";
+import { MetodoContactoEntity } from "src/metodoContacto/metodoContacto.entity/metodoContacto.entity";
 import { SucursalEntity } from "src/sucursal/sucursal.entity/sucursal.entity";
 import { UsuarioEntity } from "src/usuario/usuario.entity/usuario.entity";
 import { Column, Entity, OneToMany } from "typeorm";

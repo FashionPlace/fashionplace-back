@@ -20,6 +20,6 @@ export class CarritoProductoEntity {
     @ManyToOne(() => CarritoEntity, carrito => carrito.carritoProductos)
     carrito: CarritoEntity;
     
-    @ManyToMany(() => ProductoEntity, producto => producto.carritoProductos)
-    producto: ProductoEntity[];
+    @ManyToOne(() => ProductoEntity, producto => producto.carritoProductos)
+    producto: ProductoEntity;
 }

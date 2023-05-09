@@ -1,4 +1,4 @@
-import { CompraProductoEntity } from "src/compra-producto/compra-producto.entity/compra-producto.entity";
+import { CompraProductoEntity } from "src/compraProducto/compraProducto.entity/compraProducto.entity";
 import { CompradorEntity } from "src/comprador/comprador.entity/comprador.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 

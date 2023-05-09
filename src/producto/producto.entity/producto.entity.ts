@@ -3,7 +3,7 @@ import { CaracteristicaEntity } from 'src/caracteristica/caracteristica.entity/c
 import { CarritoProductoEntity } from 'src/carritoProducto/carritoProducto.entity/carritoProducto.entity';
 import { ColeccionEntity } from 'src/coleccion/coleccion.entity/coleccion.entity';
 import { ComentarioEntity } from 'src/comentario/comentario.entity/comentario.entity';
-import { CompraProductoEntity } from 'src/compra-producto/compra-producto.entity/compra-producto.entity';
+import { CompraProductoEntity } from 'src/compraProducto/compraProducto.entity/compraProducto.entity';
 import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
 import { SucursalEntity } from 'src/sucursal/sucursal.entity/sucursal.entity';
 import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
