@@ -9,7 +9,7 @@ import { MetodoContactoModule } from './metodoContacto/metodoContacto.module';
 import { ImagenModule } from './imagen/imagen.module';
 import { ProductoModule } from './producto/producto.module';
 import { ComentarioModule } from './comentario/comentario.module';
-import { ColeccionesModule } from './coleccion/coleccion.module';
+import { ColeccionModule } from './coleccion/coleccion.module';
 import { CaracteristicaModule } from './caracteristica/caracteristica.module';
 import { TagModule } from './tag/tag.module';
 import { CarritoModule } from './carrito/carrito.module';
@@ -33,7 +33,7 @@ import { ComentarioEntity } from 'src/comentario/comentario.entity/comentario.en
 import { CompraProductoEntity } from 'src/compraProducto/compraProducto.entity/compraProducto.entity';
 import { CompraEntity } from 'src/compra/compra.entity/compra.entity';
 import { CompradorEntity } from 'src/comprador/comprador.entity/comprador.entity';
-import { DireccionUsuarionEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
+import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { GraficaEntity } from 'src/grafica/grafica.entity/grafica.entity';
 import { ImagenEntity } from 'src/imagen/imagen.entity/imagen.entity';
@@ -59,7 +59,7 @@ import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
     MetodoContactoModule,
     ProductoModule,
     ComentarioModule,
-    ColeccionesModule,
+    ColeccionModule,
     CaracteristicaModule,
     TagModule, 
     CarritoModule, 
@@ -83,28 +83,28 @@ import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
       database: 'fashionPlace',
       entities: [
         UbicacionEntity,
-      DireccionUsuarionEntity,
-      UsuarioEntity,
-      EmpresaEntity,
-      SucursalEntity,
-      MetodoContactoEntity,
-      ProductoEntity,
-      ComentarioEntity,
-      ColeccionEntity,
-      CaracteristicaEntity,
-      TagEntity,
-      CarritoEntity,
-      CarritoProductoEntity,
-      CompraProductoEntity,
-      VisitaEntity,
-      CompraEntity,
-      CompradorEntity,
-      GraficaEntity,
-      ImagenEntity,
-      ImagenProductoEntity,
-      ImagenColeccionEntity,
-      ImagenUsuarioEntity,
-      UbicacionSucursalEntity
+        DireccionUsuarioEntity,
+        UsuarioEntity,
+        EmpresaEntity,
+        SucursalEntity,
+        MetodoContactoEntity,
+        ProductoEntity,
+        ComentarioEntity,
+        ColeccionEntity,
+        CaracteristicaEntity,
+        TagEntity,
+        CarritoEntity,
+        CarritoProductoEntity,
+        CompraProductoEntity,
+        VisitaEntity,
+        CompraEntity,
+        CompradorEntity,
+        GraficaEntity,
+        ImagenEntity,
+        ImagenProductoEntity,
+        ImagenColeccionEntity,
+        ImagenUsuarioEntity,
+        UbicacionSucursalEntity
       ],
       dropSchema: true,
       synchronize: true,

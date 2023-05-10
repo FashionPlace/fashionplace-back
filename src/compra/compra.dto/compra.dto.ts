@@ -7,6 +7,4 @@ export class CompraDto {
     @IsDateString()
     readonly fecha: Date;
 
-    @IsNotEmpty()
-    readonly comprador: CompradorDto;
 }

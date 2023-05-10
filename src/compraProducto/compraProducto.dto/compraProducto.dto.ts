@@ -16,10 +16,4 @@ export class CompraProductoDto {
     @IsNumber()
     readonly precio: number;
 
-    @IsNotEmpty()
-    readonly compra: CompraDto
-
-    @IsNotEmpty()
-    readonly producto: ProductoDto
-
 }

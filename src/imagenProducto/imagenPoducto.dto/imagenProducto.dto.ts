@@ -8,7 +8,4 @@ export class ImagenProductoDto {
     @IsString()
     readonly url: string;
 
-    @IsNotEmpty()
-    readonly producto: ProductoDto;
-
 }

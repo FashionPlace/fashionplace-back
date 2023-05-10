@@ -16,6 +16,4 @@ export class MetodoContactoDto {
     @IsNumber()
     readonly logo: number;
     
-    @IsNotEmpty()
-    readonly empresa: EmpresaDto;
 }

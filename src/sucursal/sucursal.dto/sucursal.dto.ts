@@ -5,10 +5,4 @@ import { UbicacionSucursalDto } from "src/ubicacionSucursal/ubicacionSucursal.dt
 
 export class SucursalDto {
 
-    @IsNotEmpty()
-    readonly empresa: EmpresaDto;
-
-    @IsNotEmpty()
-    readonly ubicacion: UbicacionSucursalDto;
-
 }

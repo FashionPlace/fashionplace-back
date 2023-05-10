@@ -18,7 +18,5 @@ export class UbicacionSucursalDto {
     @IsNotEmpty()
     @IsString()
     readonly adicional: string;
-
-    @IsNotEmpty()
-    readonly sucursal: SucursalDto;
+    
 }

@@ -7,6 +7,4 @@ export class ImagenColeccionDto {
     @IsString()
     readonly url: string;
 
-    @IsNotEmpty()
-    readonly coleccion: ColeccionDto
 }

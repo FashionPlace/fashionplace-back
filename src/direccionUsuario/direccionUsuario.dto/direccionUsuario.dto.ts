@@ -19,6 +19,4 @@ export class UbicacionDto {
     @IsString()
     readonly adicional: string;
 
-    @IsNotEmpty()
-    readonly usuario: UsuarioDto
 }

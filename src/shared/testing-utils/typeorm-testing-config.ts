@@ -8,7 +8,7 @@ import { ComentarioEntity } from 'src/comentario/comentario.entity/comentario.en
 import { CompraProductoEntity } from 'src/compraProducto/compraProducto.entity/compraProducto.entity';
 import { CompraEntity } from 'src/compra/compra.entity/compra.entity';
 import { CompradorEntity } from 'src/comprador/comprador.entity/comprador.entity';
-import { DireccionUsuarionEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
+import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { GraficaEntity } from 'src/grafica/grafica.entity/grafica.entity';
 import { ImagenEntity } from 'src/imagen/imagen.entity/imagen.entity';
@@ -31,7 +31,7 @@ export const TypeOrmTestingConfig = () => [
     dropSchema: true,
     entities: [
       UbicacionEntity,
-      DireccionUsuarionEntity,
+      DireccionUsuarioEntity,
       UsuarioEntity,
       EmpresaEntity,
       SucursalEntity,
@@ -59,7 +59,7 @@ export const TypeOrmTestingConfig = () => [
   }),
   TypeOrmModule.forFeature([
     UbicacionEntity,
-    DireccionUsuarionEntity,
+    DireccionUsuarioEntity,
     UsuarioEntity,
     EmpresaEntity,
     SucursalEntity,

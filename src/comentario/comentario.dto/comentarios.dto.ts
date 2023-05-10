@@ -1,12 +1,12 @@
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { CompraDto } from "src/compra/compra.dto/compra.dto";
+import { CompradorDto } from "src/comprador/comprador.dto/comprador.dto";
 import { ProductoDto } from "src/producto/producto.dto/producto.dto";
 
 export class ComentarioDto {
 
     @IsNotEmpty()
     @IsString()
-    readonly titulo: number;
+    readonly titulo: string;
     
     @IsNotEmpty()
     @IsDateString()
@@ -19,11 +19,5 @@ export class ComentarioDto {
     @IsNotEmpty()
     @IsNumber()
     readonly calificacion: number;
-
-    @IsNotEmpty()
-    readonly producto: ProductoDto
-
-    @IsNotEmpty()
-    readonly comprador: CompraDto
 
 }

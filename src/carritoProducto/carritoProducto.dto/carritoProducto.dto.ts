@@ -13,6 +13,4 @@ export class CarritoProductoDto {
     @IsNumber()
     readonly precio: number;
 
-    @IsNotEmpty()
-    readonly carrito: CarritoProductoDto
 }

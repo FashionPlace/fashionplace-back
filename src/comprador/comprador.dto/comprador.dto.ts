@@ -1,11 +1,6 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { CarritoDto } from "src/carrito/carrito.dto/carrito.dto";
-import { ImagenUsuarioDto } from "src/imagenUsuario/imagenUsuario.dto/imagenUsuario.dto";
 
 export class CompradorDto {
-
-    @IsNotEmpty()
-    readonly carrito: CarritoDto;
 
     @IsNotEmpty()
     @IsString()
@@ -30,8 +25,5 @@ export class CompradorDto {
     @IsNotEmpty()
     @IsString()
     readonly celular: string;
-
-    @IsNotEmpty()
-    readonly imagen: ImagenUsuarioDto;
 
 }

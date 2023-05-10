@@ -28,6 +28,4 @@ export class UsuarioDto {
     @IsString()
     readonly celular: string;
 
-    @IsNotEmpty()
-    readonly imagen: ImagenUsuarioDto;
 }

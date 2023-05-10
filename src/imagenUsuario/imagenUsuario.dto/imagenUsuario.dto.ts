@@ -8,7 +8,4 @@ export class ImagenUsuarioDto {
     @IsString()
     readonly url: string;
 
-    @IsNotEmpty()
-    readonly usuario: UsuarioDto;
-
 }

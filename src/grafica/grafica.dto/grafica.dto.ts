@@ -8,7 +8,4 @@ export class GraficaDto {
     @IsString()
     readonly url: string;
 
-    @IsNotEmpty()
-    readonly empresa: EmpresaDto
-
 }

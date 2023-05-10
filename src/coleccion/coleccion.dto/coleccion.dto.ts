@@ -11,7 +11,4 @@ export class ColeccionDto {
     @IsString()
     readonly descripcion: string;
 
-    @IsNotEmpty()
-    readonly imagen: ImagenColeccionDto;
-
 }

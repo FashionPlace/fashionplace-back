@@ -7,6 +7,4 @@ export class CarritoDto {
     @IsNotEmpty()
     readonly fecha: Date;
 
-    @IsNotEmpty()
-    readonly compradro: CompradorDto;
 }

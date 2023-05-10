@@ -28,9 +28,6 @@ export class EmpresaDto {
     readonly celular: string;
 
     @IsNotEmpty()
-    readonly imagen: ImagenUsuarioDto;
-
-    @IsNotEmpty()
     @IsString()
     readonly descripcion: string;
 
