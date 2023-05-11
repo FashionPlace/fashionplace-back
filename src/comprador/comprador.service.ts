@@ -3,13 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CompradorEntity } from './comprador.entity/comprador.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { CarritoEntity } from 'src/carrito/carrito.entity/carrito.entity';
 
 @Injectable()
 export class CompradorService {
 
     constructor(
         @InjectRepository(CompradorEntity)
-        private readonly compradorRepository: Repository<CompradorEntity>
+        private readonly compradorRepository: Repository<CompradorEntity>,
+        @InjectRepository(CarritoEntity)
+        private readonly carritoRepository: Repository<CarritoEntity>
     ){}
 
     async findAll(): Promise<CompradorEntity[]> {
@@ -24,6 +27,10 @@ export class CompradorService {
     }
 
     async create(comprador: CompradorEntity): Promise<CompradorEntity> {
+        const carrito = new CarritoEntity();
+        carrito.fecha = new Date();
+        const savedCarrito: CarritoEntity = await this.carritoRepository.save(carrito);
+        comprador.carrito = savedCarrito;
         return await this.compradorRepository.save(comprador);
     }
 
