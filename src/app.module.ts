@@ -48,6 +48,7 @@ import { UbicacionEntity } from 'src/ubicacion/ubicacion.entity/ubicacion.entity
 import { UbicacionSucursalEntity } from 'src/ubicacionSucursal/ubicacionSucursal.entity/ubicacionSucursal.entity';
 import { UsuarioEntity } from 'src/usuario/usuario.entity/usuario.entity';
 import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
+import { LoginModule } from './login/login.module';
 
 @Module({
   imports: [
@@ -110,6 +111,7 @@ import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
       synchronize: true,
       keepConnectionAlive: true
     }),
+    LoginModule,
   
   ],
   controllers: [AppController],
