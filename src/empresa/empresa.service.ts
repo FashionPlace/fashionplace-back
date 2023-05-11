@@ -16,11 +16,11 @@ export class EmpresaService {
     ){}
 
     async findAll(): Promise<EmpresaEntity[]> {
-        return await this.empresaRepository.find({ relations: ["imagen", "direccion", "sucursales", "graficas", "metodosContacto"] });
+        return await this.empresaRepository.find({ relations: ["direccion", "sucursales", "graficas", "metodosContacto"] });
     }
 
     async findOne(id: string): Promise<EmpresaEntity> {
-        const empresa: EmpresaEntity = await this.empresaRepository.findOne({where: {id}, relations: ["imagen", "direccion", "sucursales", "graficas", "metodosContacto"] } );
+        const empresa: EmpresaEntity = await this.empresaRepository.findOne({where: {id}, relations: ["direccion", "sucursales", "graficas", "metodosContacto"] } );
         if (!empresa)
           throw new BusinessLogicException("The empresa with the given id was not found", BusinessError.NOT_FOUND);
         return empresa;

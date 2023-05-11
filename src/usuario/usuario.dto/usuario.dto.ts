@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsString } from "class-validator";
-import { ImagenUsuarioDto } from "src/imagenUsuario/imagenUsuario.dto/imagenUsuario.dto";
+import { IsNotEmpty, IsString, IsUrl } from "class-validator";
 
 export class UsuarioDto {
     
@@ -27,5 +26,9 @@ export class UsuarioDto {
     @IsNotEmpty()
     @IsString()
     readonly celular: string;
+
+    @IsNotEmpty()
+    @IsUrl()
+    readonly foto: string;
 
 }

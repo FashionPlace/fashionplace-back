@@ -20,7 +20,6 @@ import { CompraModule } from './compra/compra.module';
 import { CompradorModule } from './comprador/comprador.module';
 import { GraficaModule } from './grafica/grafica.module';
 import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
-import { ImagenUsuarioModule } from './imagenUsuario/imagenUsuario.module';
 import { UbicacionSucursalModule } from './ubicacionSucursal/ubicacionSucursal.module';
 import { DireccionUsuarioModule } from './direccionUsuario/direccionUsuario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -37,7 +36,6 @@ import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { GraficaEntity } from 'src/grafica/grafica.entity/grafica.entity';
 import { ImagenEntity } from 'src/imagen/imagen.entity/imagen.entity';
 import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
-import { ImagenUsuarioEntity } from 'src/imagenUsuario/imagenUsuario.entity/imagenUsuario.entity';
 import { MetodoContactoEntity } from 'src/metodoContacto/metodoContacto.entity/metodoContacto.entity';
 import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 import { SucursalEntity } from 'src/sucursal/sucursal.entity/sucursal.entity';
@@ -70,7 +68,6 @@ import { LoginModule } from './login/login.module';
     GraficaModule, 
     ImagenModule, 
     ImagenProductoModule, 
-    ImagenUsuarioModule,
     UbicacionSucursalModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -100,7 +97,6 @@ import { LoginModule } from './login/login.module';
         GraficaEntity,
         ImagenEntity,
         ImagenProductoEntity,
-        ImagenUsuarioEntity,
         UbicacionSucursalEntity
       ],
       dropSchema: true,

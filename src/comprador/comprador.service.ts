@@ -19,11 +19,11 @@ export class CompradorService {
     ){}
 
     async findAll(): Promise<CompradorEntity[]> {
-        return await this.compradorRepository.find({ relations: ["imagen", "direccion", "compras", "carrito", "visitas", "comentarios"] });
+        return await this.compradorRepository.find({ relations: ["direccion", "compras", "carrito", "visitas", "comentarios"] });
     }
 
     async findOne(id: string): Promise<CompradorEntity> {
-        const comprador: CompradorEntity = await this.compradorRepository.findOne({where: {id}, relations: ["imagen", "direccion", "compras", "carrito", "visitas", "comentarios"] } );
+        const comprador: CompradorEntity = await this.compradorRepository.findOne({where: {id}, relations: ["direccion", "compras", "carrito", "visitas", "comentarios"] } );
         if (!comprador)
           throw new BusinessLogicException("The comprador with the given id was not found", BusinessError.NOT_FOUND);
         return comprador;

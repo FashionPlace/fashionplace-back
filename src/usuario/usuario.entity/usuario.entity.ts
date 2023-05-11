@@ -1,6 +1,5 @@
 import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
-import { ImagenUsuarioEntity } from 'src/imagenUsuario/imagenUsuario.entity/imagenUsuario.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class UsuarioEntity {
@@ -25,10 +24,9 @@ export class UsuarioEntity {
 
     @Column()
     celular: string;
-    
-    @OneToOne(() => ImagenUsuarioEntity, imagenUsuario => imagenUsuario.usuario)
-    @JoinColumn()
-    imagen: ImagenUsuarioEntity;
+
+    @Column()
+    foto: string;
 
     @ManyToOne(() => DireccionUsuarioEntity, direccionUsuario => direccionUsuario.usuarios)
     direccion: DireccionUsuarioEntity;

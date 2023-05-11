@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, IsUrl } from "class-validator";
 
 export class CompradorDto {
 
@@ -25,5 +25,9 @@ export class CompradorDto {
     @IsNotEmpty()
     @IsString()
     readonly celular: string;
+
+    @IsNotEmpty()
+    @IsUrl()
+    readonly foto: string;
 
 }
