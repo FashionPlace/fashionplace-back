@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "942b7f7f-d618-41ab-b296-9463619feec3",
+		"_postman_id": "6a51de16-7681-4fee-91b2-f75b24a8c882",
 		"name": "Sucursal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25894623"
 	},
 	"item": [
 		{
-			"name": "Create Sucursal",
+			"name": "Create Sucursal With Ubicacion",
 			"event": [
 				{
 					"listen": "test",
@@ -15,6 +15,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);\r",
 							"postman.setGlobalVariable(\"id_sucursal\",data.id);\r",
+							"postman.setGlobalVariable(\"id_ubicacion\",data.ubicacion.id);\r",
 							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
 						],
 						"type": "text/javascript"
@@ -26,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n}",
+					"raw": "{\r\n    \"empresa\": {\r\n        \"id\": \"{{id_empresa}}\"\r\n    },\r\n    \"ubicacion\": {\r\n        \"pais\": \"Colombia\",\r\n        \"ciudad\": \"Bogota\",\r\n        \"direccion\": \"carrera 51 #45-11\",\r\n        \"adicional\": \"Centro Comercial ssan Miguel\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

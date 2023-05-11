@@ -1,8 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty } from "class-validator";
 import { EmpresaDto } from "src/empresa/empresa.dto/empresa.dto";
-import { UbicacionSucursalDto } from "src/ubicacionSucursal/ubicacionSucursal.dto/ubicacionSucursal.dto";
+import { UbicacionDto } from "src/ubicacion/ubicacion.dto/ubicacion.dto";
 
 export class SucursalDto {
+
+    @IsNotEmpty()
+    empresa: EmpresaDto;
+
+    @IsNotEmpty()
+    ubicacion: UbicacionDto;
 
 }

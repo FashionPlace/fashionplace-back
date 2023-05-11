@@ -3,13 +3,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { SucursalEntity } from './sucursal.entity/sucursal.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
+import { UbicacionSucursalEntity } from 'src/ubicacionSucursal/ubicacionSucursal.entity/ubicacionSucursal.entity';
 
 @Injectable()
 export class SucursalService {
 
     constructor(
         @InjectRepository(SucursalEntity)
-        private readonly sucursalRepository: Repository<SucursalEntity>
+        private readonly sucursalRepository: Repository<SucursalEntity>,
+        @InjectRepository(EmpresaEntity)
+        private readonly empresaRepository: Repository<EmpresaEntity>,
+        @InjectRepository(UbicacionSucursalEntity)
+        private readonly ubicacionSucursalRepository: Repository<UbicacionSucursalEntity>
     ){}
 
     async findAll(): Promise<SucursalEntity[]> {
@@ -24,7 +30,21 @@ export class SucursalService {
     }
 
     async create(sucursal: SucursalEntity): Promise<SucursalEntity> {
-        return await this.sucursalRepository.save(sucursal);
+        
+        //TODO Check if the ubcacion of a created sucursal corresponds to the ubicacion of the actual sucursal
+        
+        //Se obtiene la empresa a la que se va a vincular
+        const empresa: EmpresaEntity = await this.empresaRepository.findOne({where: {id: sucursal.empresa.id}, relations: ["sucursales"]});
+        if(!empresa)
+            throw new BusinessLogicException("La empresa vinculada a la sucursal debe existir", BusinessError.PRECONDITION_FAILED);
+        
+        const savedUbicacionSucursal: UbicacionSucursalEntity = await this.ubicacionSucursalRepository.save(sucursal.ubicacion);
+        sucursal.ubicacion = savedUbicacionSucursal;
+
+        const savedSucursal: SucursalEntity = await this.sucursalRepository.save(sucursal)
+        empresa.sucursales = [...empresa.sucursales, savedSucursal];
+        await this.empresaRepository.save(empresa);
+        return savedSucursal;
     }
 
     async update(id: string, sucursal: SucursalEntity): Promise<SucursalEntity> {

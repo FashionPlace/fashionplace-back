@@ -22,14 +22,14 @@ export class SucursalController {
     }
 
     @Post()
-    async create(@Body() sucursalsDto: SucursalDto) {
-        const sucursal: SucursalEntity = plainToInstance(SucursalEntity, sucursalsDto);
+    async create(@Body() sucursalDto: SucursalDto) {
+        const sucursal: SucursalEntity = plainToInstance(SucursalEntity, sucursalDto);
         return await this.sucursalService.create(sucursal);
     }
 
     @Put(':sucursalId')
-    async update(@Param('sucursalId') sucursalId: string, @Body() sucursalsDto: SucursalDto) {
-        const sucursal: SucursalEntity = plainToInstance(SucursalEntity, sucursalsDto);
+    async update(@Param('sucursalId') sucursalId: string, @Body() sucursalDto: SucursalDto) {
+        const sucursal: SucursalEntity = plainToInstance(SucursalEntity, sucursalDto);
         return await this.sucursalService.update(sucursalId, sucursal);
     }
 
