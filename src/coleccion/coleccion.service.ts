@@ -13,11 +13,11 @@ export class ColeccionService {
     ){}
 
     async findAll(): Promise<ColeccionEntity[]> {
-        return await this.coleccionRepository.find({ relations: ["imagen", "productos"] });
+        return await this.coleccionRepository.find({ relations: ["productos"] });
     }
 
     async findOne(id: string): Promise<ColeccionEntity> {
-        const coleccion: ColeccionEntity = await this.coleccionRepository.findOne({where: {id}, relations: ["imagen", "productos"] } );
+        const coleccion: ColeccionEntity = await this.coleccionRepository.findOne({where: {id}, relations: ["productos"] } );
         if (!coleccion)
           throw new BusinessLogicException("The coleccion with the given id was not found", BusinessError.NOT_FOUND);
         return coleccion;

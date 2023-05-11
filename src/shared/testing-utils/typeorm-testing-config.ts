@@ -12,7 +12,6 @@ import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.en
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { GraficaEntity } from 'src/grafica/grafica.entity/grafica.entity';
 import { ImagenEntity } from 'src/imagen/imagen.entity/imagen.entity';
-import { ImagenColeccionEntity } from 'src/imagenColeccion/imagenColeccion.entity/imagenColeccion.entity';
 import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
 import { ImagenUsuarioEntity } from 'src/imagenUsuario/imagenUsuario.entity/imagenUsuario.entity';
 import { MetodoContactoEntity } from 'src/metodoContacto/metodoContacto.entity/metodoContacto.entity';
@@ -50,7 +49,6 @@ export const TypeOrmTestingConfig = () => [
       GraficaEntity,
       ImagenEntity,
       ImagenProductoEntity,
-      ImagenColeccionEntity,
       ImagenUsuarioEntity,
       UbicacionSucursalEntity
     ],
@@ -78,7 +76,6 @@ export const TypeOrmTestingConfig = () => [
     GraficaEntity,
     ImagenEntity,
     ImagenProductoEntity,
-    ImagenColeccionEntity,
     ImagenUsuarioEntity,
     UbicacionSucursalEntity]),
 ];

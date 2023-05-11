@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "6a51de16-7681-4fee-91b2-f75b24a8c882",
+		"_postman_id": "8e54d7b5-773a-4d7b-81cf-1faa79a53770",
 		"name": "Sucursal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25894623"
 	},
 	"item": [
 		{
-			"name": "Create Sucursal With Ubicacion",
+			"name": "Create Sucursal",
 			"event": [
 				{
 					"listen": "test",

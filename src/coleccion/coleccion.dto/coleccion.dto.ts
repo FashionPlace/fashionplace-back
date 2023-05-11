@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, IsUrl } from "class-validator";
 
 export class ColeccionDto {
 
@@ -9,5 +9,9 @@ export class ColeccionDto {
     @IsNotEmpty()
     @IsString()
     readonly descripcion: string;
+
+    @IsNotEmpty()
+    @IsUrl()
+    readonly imagen: string;
 
 }

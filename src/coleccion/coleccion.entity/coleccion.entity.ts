@@ -1,4 +1,3 @@
-import { ImagenColeccionEntity } from "src/imagenColeccion/imagenColeccion.entity/imagenColeccion.entity";
 import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 import { Column, Entity, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -14,8 +13,8 @@ export class ColeccionEntity {
     @Column()
     descripcion: string;
 
-    @OneToOne(() => ImagenColeccionEntity, imagenColeccion => imagenColeccion.coleccion)
-    imagen: ImagenColeccionEntity;
+    @Column()
+    imagen: string;
 
     @ManyToMany(() => ProductoEntity, producto => producto.colecciones)
     productos: ProductoEntity[];

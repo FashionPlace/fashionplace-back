@@ -19,7 +19,6 @@ import { VisitaModule } from './visita/visita.module';
 import { CompraModule } from './compra/compra.module';
 import { CompradorModule } from './comprador/comprador.module';
 import { GraficaModule } from './grafica/grafica.module';
-import { ImagenColeccionModule } from './imagenColeccion/imagenColeccion.module';
 import { ImagenProductoModule } from './imagenProducto/imagenProducto.module';
 import { ImagenUsuarioModule } from './imagenUsuario/imagenUsuario.module';
 import { UbicacionSucursalModule } from './ubicacionSucursal/ubicacionSucursal.module';
@@ -37,7 +36,6 @@ import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.en
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { GraficaEntity } from 'src/grafica/grafica.entity/grafica.entity';
 import { ImagenEntity } from 'src/imagen/imagen.entity/imagen.entity';
-import { ImagenColeccionEntity } from 'src/imagenColeccion/imagenColeccion.entity/imagenColeccion.entity';
 import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
 import { ImagenUsuarioEntity } from 'src/imagenUsuario/imagenUsuario.entity/imagenUsuario.entity';
 import { MetodoContactoEntity } from 'src/metodoContacto/metodoContacto.entity/metodoContacto.entity';
@@ -72,7 +70,6 @@ import { LoginModule } from './login/login.module';
     GraficaModule, 
     ImagenModule, 
     ImagenProductoModule, 
-    ImagenColeccionModule, 
     ImagenUsuarioModule,
     UbicacionSucursalModule,
     TypeOrmModule.forRoot({
@@ -103,7 +100,6 @@ import { LoginModule } from './login/login.module';
         GraficaEntity,
         ImagenEntity,
         ImagenProductoEntity,
-        ImagenColeccionEntity,
         ImagenUsuarioEntity,
         UbicacionSucursalEntity
       ],
