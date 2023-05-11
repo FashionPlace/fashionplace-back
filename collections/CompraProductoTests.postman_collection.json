@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "942b7f7f-d618-41ab-b296-9463619feec3",
+		"name": "CompraProductoTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25894623"
+	},
+	"item": [
+		{
+			"name": "Create CompraProducto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_compraProducto\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\": 1,\r\n    \"talla\": \"L\",\r\n    \"precio\": 123242\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/compra-productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"compra-productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All CompraProducto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;",
+							"tests[\"Count\"] = data.length > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/compradores",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"compradores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One CompraProducto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/compra-productos/{{id_compraProducto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"compra-productos",
+						"{{id_compraProducto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CompraProducto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Delete doesnt generate error\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/compra-productos/{{id_compraProducto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"compra-productos",
+						"{{id_compraProducto}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

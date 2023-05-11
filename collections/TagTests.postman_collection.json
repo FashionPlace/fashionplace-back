@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "942b7f7f-d618-41ab-b296-9463619feec3",
+		"name": "Tag",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25894623"
+	},
+	"item": [
+		{
+			"name": "Create Tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_tag\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"L\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tags",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;",
+							"tests[\"Count\"] = data.length > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tags",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tags/{{id_tag}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tags",
+						"{{id_tag}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Delete doesnt generate error\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tags/{{id_tag}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tags",
+						"{{id_tag}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

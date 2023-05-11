@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "32adbf71-1fef-4530-9e44-db013be88b02",
+		"name": "ComentarioTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25894623"
+	},
+	"item": [
+		{
+			"name": "Create Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_comentario\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Buena calidad\",\r\n    \"fecha\": \"2023-04-13\",\r\n    \"descripcion\": \"Me encanto este producto\",\r\n    \"calificacion\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/comentarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"comentarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;",
+							"tests[\"Count\"] = data.length > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/comentarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"comentarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/comentarios/{{id_comentario}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"comentarios",
+						"{{id_comentario}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comentario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Delete doesnt generate error\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/comentarios/{{id_comentario}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"comentarios",
+						"{{id_comentario}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

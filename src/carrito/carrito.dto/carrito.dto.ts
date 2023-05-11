@@ -1,9 +1,10 @@
-import { IsNotEmpty, IsString } from "class-validator";
-import { CompradorDto } from "src/comprador/comprador.dto/comprador.dto";
+import { Type } from "class-transformer";
+import { IsDate, IsNotEmpty } from "class-validator";
 
 export class CarritoDto {
 
-    @IsString()
+    @Type(() => Date)
+    @IsDate()
     @IsNotEmpty()
     readonly fecha: Date;
 

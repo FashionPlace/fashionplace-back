@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ImagenColeccionController } from './imagenColeccion.controller';
 import { ImagenColeccionService } from './imagenColeccion.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ImagenColeccionController } from './imagenColeccion.controller';
 import { ImagenColeccionEntity } from './imagenColeccion.entity/imagenColeccion.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [ImagenColeccionController],
   providers: [ImagenColeccionService],
+  controllers: [ImagenColeccionController],
   imports: [TypeOrmModule.forFeature([ImagenColeccionEntity])],
 })
 export class ImagenColeccionModule {}

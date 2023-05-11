@@ -13,11 +13,11 @@ export class VisitaService {
     ){}
 
     async findAll(): Promise<VisitaEntity[]> {
-        return await this.visitaRepository.find({ relations: ["tags", "productos"] });
+        return await this.visitaRepository.find({ relations: ["comprador", "producto"] });
     }
 
     async findOne(id: string): Promise<VisitaEntity> {
-        const visita: VisitaEntity = await this.visitaRepository.findOne({where: {id}, relations: ["tags", "productos"] } );
+        const visita: VisitaEntity = await this.visitaRepository.findOne({where: {id}, relations: ["comprador", "producto"] } );
         if (!visita)
           throw new BusinessLogicException("The visita with the given id was not found", BusinessError.NOT_FOUND);
         return visita;

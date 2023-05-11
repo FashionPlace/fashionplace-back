@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "942b7f7f-d618-41ab-b296-9463619feec3",
+		"name": "MetodoContacto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25894623"
+	},
+	"item": [
+		{
+			"name": "Create MetodoContacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_metodoContacto\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipo\": \"WhatsApp\",\r\n    \"enlace\": \"https://www.whatsapp.com/?lang=es\",\r\n    \"logo\": \"https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c543.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/metodos-contacto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"metodos-contacto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All MetodoContacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;",
+							"tests[\"Count\"] = data.length > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/metodos-contacto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"metodos-contacto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One MetodoContacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"tests[\"Get doesnt generate error\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/metodos-contacto/{{id_metodoContacto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"metodos-contacto",
+						"{{id_metodoContacto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete MetodoContacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Delete doesnt generate error\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/metodos-contacto/{{id_metodoContacto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"metodos-contacto",
+						"{{id_metodoContacto}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

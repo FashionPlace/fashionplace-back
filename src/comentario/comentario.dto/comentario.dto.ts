@@ -1,6 +1,5 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
-import { CompradorDto } from "src/comprador/comprador.dto/comprador.dto";
-import { ProductoDto } from "src/producto/producto.dto/producto.dto";
+import { Type } from "class-transformer";
+import { IsDate, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class ComentarioDto {
 
@@ -8,8 +7,9 @@ export class ComentarioDto {
     @IsString()
     readonly titulo: string;
     
+    @Type(() => Date)
+    @IsDate()
     @IsNotEmpty()
-    @IsDateString()
     readonly fecha: Date;
     
     @IsNotEmpty()

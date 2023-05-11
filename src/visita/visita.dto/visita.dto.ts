@@ -8,10 +8,5 @@ export class VisitaDto {
     @IsNotEmpty()
     @IsDateString()
     readonly fecha: string;
-
-    @IsNotEmpty()
-    readonly comprador: CompradorDto;
-
-    @IsNotEmpty()
-    readonly producto: ProductoDto;
+    
 }

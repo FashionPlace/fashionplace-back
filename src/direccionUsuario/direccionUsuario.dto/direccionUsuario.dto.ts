@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsString } from 'class-validator';
-import { UsuarioDto } from 'src/usuario/usuario.dto/usuario.dto';
 
-export class UbicacionDto {
+export class DireccionUsuarioDto {
     @IsNotEmpty()
     @IsString()
     readonly pais: string;
