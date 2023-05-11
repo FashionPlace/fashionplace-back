@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bcfa56ae-1ded-466d-966c-e044f28a0dd1",
+		"_postman_id": "8d859dfd-ed42-4c73-8d53-76f96bcf8ccd",
 		"name": "Usuario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25894623"
@@ -26,7 +26,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"documento\": \"2144324\",\r\n    \"contrasenia\": \"carlos123\",\r\n    \"email\": \"carlos@hola.com\",\r\n    \"emailRespaldo\": \"carlos@chao.com\",\r\n    \"celular\": \"313414\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"documento\": \"2144324\",\r\n    \"contrasenia\": \"carlos123\",\r\n    \"email\": \"carlos@hola.com\",\r\n    \"emailRespaldo\": \"carlos@chao.com\",\r\n    \"celular\": \"313414\",\r\n    \"foto\": \"https://media.discordapp.net/attachments/1106248038705528832/1106248258466095216/Senora.jpg?width=671&height=671\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

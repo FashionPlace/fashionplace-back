@@ -58,11 +58,17 @@ export class CompradorService {
     }
 
     async delete(id: string) {
-        const comprador: CompradorEntity = await this.compradorRepository.findOne({where:{id}});
+        const comprador: CompradorEntity = await this.compradorRepository.findOne({where:{id}, relations: ["carrito"]});
+        const carrito: CarritoEntity = await this.carritoRepository.findOne({where:{id: comprador.carrito.id}});
+
         if (!comprador)
           throw new BusinessLogicException("The comprador with the given id was not found", BusinessError.NOT_FOUND);
-     
+
+        if (!carrito)
+          throw new BusinessLogicException("The carrito with the given id was not found", BusinessError.NOT_FOUND);
+        
         await this.compradorRepository.remove(comprador);
+        await this.carritoRepository.remove(carrito);
     }
 
 }

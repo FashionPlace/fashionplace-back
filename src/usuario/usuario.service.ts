@@ -13,11 +13,11 @@ export class UsuarioService {
     ){}
 
     async findAll(): Promise<UsuarioEntity[]> {
-        return await this.usuarioRepository.find({ relations: ["imagen", "direccion"] });
+        return await this.usuarioRepository.find({ relations: ["direccion"] });
     }
 
     async findOne(id: string): Promise<UsuarioEntity> {
-        const usuario: UsuarioEntity = await this.usuarioRepository.findOne({where: {id}, relations: ["imagen", "direccion"] } );
+        const usuario: UsuarioEntity = await this.usuarioRepository.findOne({where: {id}, relations: ["direccion"] } );
         if (!usuario)
           throw new BusinessLogicException("The usuario with the given id was not found", BusinessError.NOT_FOUND);
         return usuario;

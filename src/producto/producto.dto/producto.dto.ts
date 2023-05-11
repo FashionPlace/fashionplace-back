@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class ProductoDto {
 
@@ -19,8 +19,8 @@ export class ProductoDto {
     @IsNumber()
     readonly unidadesDisponibles: number;
     
-    @IsNotEmpty()
     @IsNumber()
+    @IsOptional()
     readonly descuento: number;
 
 }
