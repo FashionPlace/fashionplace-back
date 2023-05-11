@@ -4,6 +4,7 @@ import { CompradorEntity } from './comprador.entity/comprador.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
 import { CarritoEntity } from 'src/carrito/carrito.entity/carrito.entity';
+import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 
 @Injectable()
 export class CompradorService {
@@ -12,7 +13,9 @@ export class CompradorService {
         @InjectRepository(CompradorEntity)
         private readonly compradorRepository: Repository<CompradorEntity>,
         @InjectRepository(CarritoEntity)
-        private readonly carritoRepository: Repository<CarritoEntity>
+        private readonly carritoRepository: Repository<CarritoEntity>,
+        @InjectRepository(EmpresaEntity)
+        private readonly empresaRepository: Repository<EmpresaEntity>
     ){}
 
     async findAll(): Promise<CompradorEntity[]> {
@@ -27,6 +30,18 @@ export class CompradorService {
     }
 
     async create(comprador: CompradorEntity): Promise<CompradorEntity> {
+
+        const allCompradores: CompradorEntity[] = await this.compradorRepository.find();
+        const allEmpresas: EmpresaEntity[] = await this.empresaRepository.find();
+        if(allCompradores.find(u => {u.email == (comprador.email) || u.documento == (comprador.documento)}))
+            throw new BusinessLogicException("Email no disponible: " + comprador.email, BusinessError.PRECONDITION_FAILED);
+        if(allEmpresas.find(e => {e.email == comprador.email}))
+            throw new BusinessLogicException("Email no disponible: " + comprador.email, BusinessError.PRECONDITION_FAILED);
+        if(allCompradores.find(u => u.documento == (comprador.documento)))
+            throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + comprador.documento, BusinessError.PRECONDITION_FAILED);
+        if(allEmpresas.find(e => {e.documento == comprador.documento}))
+            throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + comprador.documento, BusinessError.PRECONDITION_FAILED);
+
         const carrito = new CarritoEntity();
         carrito.fecha = new Date();
         const savedCarrito: CarritoEntity = await this.carritoRepository.save(carrito);
