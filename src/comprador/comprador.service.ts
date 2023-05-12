@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CompradorEntity } from './comprador.entity/comprador.entity';
@@ -5,6 +6,8 @@ import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
 import { CarritoEntity } from 'src/carrito/carrito.entity/carrito.entity';
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
+import { UsuarioEntity } from 'src/usuario/usuario.entity/usuario.entity';
+import { DireccionUsuarioEntity } from 'src/direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
 
 @Injectable()
 export class CompradorService {
@@ -15,7 +18,11 @@ export class CompradorService {
         @InjectRepository(CarritoEntity)
         private readonly carritoRepository: Repository<CarritoEntity>,
         @InjectRepository(EmpresaEntity)
-        private readonly empresaRepository: Repository<EmpresaEntity>
+        private readonly empresaRepository: Repository<EmpresaEntity>,
+        @InjectRepository(UsuarioEntity)
+        private readonly usuarioRepository: Repository<UsuarioEntity>,
+        @InjectRepository(DireccionUsuarioEntity)
+        private readonly direccionUsuarioRepository: Repository<DireccionUsuarioEntity>
     ){}
 
     async findAll(): Promise<CompradorEntity[]> {
@@ -41,12 +48,28 @@ export class CompradorService {
             throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + comprador.documento, BusinessError.PRECONDITION_FAILED);
         if(allEmpresas.find(e => {e.documento == comprador.documento}))
             throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + comprador.documento, BusinessError.PRECONDITION_FAILED);
-
+        
+        const direccionUsuario: DireccionUsuarioEntity = await this.direccionUsuarioRepository.findOne({where: {id: comprador.direccion.id} } );
+        if (!direccionUsuario)
+            throw new BusinessLogicException("The direccionUsuario with the given id was not found", BusinessError.NOT_FOUND);
+    
         const carrito = new CarritoEntity();
         carrito.fecha = new Date();
         const savedCarrito: CarritoEntity = await this.carritoRepository.save(carrito);
         comprador.carrito = savedCarrito;
-        return await this.compradorRepository.save(comprador);
+        const savedComprador: CompradorEntity = await this.compradorRepository.save(comprador);
+        const usuario = new UsuarioEntity();
+        usuario.id= savedComprador.id;
+        usuario.nombre= savedComprador.nombre;
+        usuario.documento= savedComprador.documento;
+        usuario.contrasenia= savedComprador.contrasenia;
+        usuario.email= savedComprador.email;
+        usuario.emailRespaldo= savedComprador.emailRespaldo;
+        usuario.celular= savedComprador.celular;
+        usuario.foto= savedComprador.foto;
+        usuario.direccion= savedComprador.direccion;
+        const savedUsuario: UsuarioEntity = await this.usuarioRepository.save(usuario);
+        return savedComprador;
     }
 
     async update(id: string, comprador: CompradorEntity): Promise<CompradorEntity> {

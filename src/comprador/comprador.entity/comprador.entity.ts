@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { CarritoEntity } from "src/carrito/carrito.entity/carrito.entity";
 import { ComentarioEntity } from "src/comentario/comentario.entity/comentario.entity";
 import { CompraEntity } from "src/compra/compra.entity/compra.entity";
