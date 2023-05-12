@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "32adbf71-1fef-4530-9e44-db013be88b02",
+		"_postman_id": "a1eaaf3d-01da-412d-a177-417ecb027d55",
 		"name": "ComentarioTests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25894623"
@@ -26,7 +26,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\": \"Buena calidad\",\r\n    \"fecha\": \"2023-04-13\",\r\n    \"descripcion\": \"Me encanto este producto\",\r\n    \"calificacion\": 5\r\n}",
+					"raw": "{\r\n    \"titulo\": \"Buena calidad\",\r\n    \"fecha\": \"2023-04-13\",\r\n    \"descripcion\": \"Me encanto este producto\",\r\n    \"calificacion\": 5,\r\n    \"producto\": \"{{id_producto}}\",\r\n    \"comprador\": \"{{id_compradores}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
