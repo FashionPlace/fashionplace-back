@@ -60,7 +60,7 @@ export class EmpresaService {
         usuario.celular= savedEmpresa.celular;
         usuario.foto= savedEmpresa.foto;
         usuario.direccion= savedEmpresa.direccion;
-        const savedUsuario: UsuarioEntity = await this.usuarioRepository.save(usuario);
+        await this.usuarioRepository.save(usuario);
         return savedEmpresa;
     }
 

@@ -1,11 +1,50 @@
 {
 	"info": {
-		"_postman_id": "8d859dfd-ed42-4c73-8d53-76f96bcf8ccd",
+		"_postman_id": "0f3beb44-0770-4eb1-8ef3-547afc49f40a",
 		"name": "Usuario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25894623"
+		"_exporter_id": "25914505"
 	},
 	"item": [
+		{
+			"name": "Create DireccionUsuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_DireccionUsuarios\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pais\": \"Colombia\",\r\n    \"ciudad\": \"Bogota\",\r\n    \"direccion\": \"carrera 54 #10-2\",\r\n    \"adicional\": \"Conjunto San Juan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/direccion-usuarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"direccion-usuarios"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Create Usuario",
 			"event": [
@@ -26,7 +65,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"documento\": \"2144324\",\r\n    \"contrasenia\": \"carlos123\",\r\n    \"email\": \"carlos@hola.com\",\r\n    \"emailRespaldo\": \"carlos@chao.com\",\r\n    \"celular\": \"313414\",\r\n    \"foto\": \"https://media.discordapp.net/attachments/1106248038705528832/1106248258466095216/Senora.jpg?width=671&height=671\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"documento\": \"2144324\",\r\n    \"contrasenia\": \"carlos123\",\r\n    \"email\": \"carlos@hola.com\",\r\n    \"emailRespaldo\": \"carlos@chao.com\",\r\n    \"celular\": \"313414\",\r\n    \"foto\": \"https://media.discordapp.net/attachments/1106248038705528832/1106248258466095216/Senora.jpg?width=671&height=671\",\r\n    \"direccion\": \"{{id_DireccionUsuarios}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

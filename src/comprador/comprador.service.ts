@@ -68,7 +68,7 @@ export class CompradorService {
         usuario.celular= savedComprador.celular;
         usuario.foto= savedComprador.foto;
         usuario.direccion= savedComprador.direccion;
-        const savedUsuario: UsuarioEntity = await this.usuarioRepository.save(usuario);
+        await this.usuarioRepository.save(usuario);
         return savedComprador;
     }
 
