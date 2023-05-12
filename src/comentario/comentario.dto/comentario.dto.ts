@@ -1,5 +1,7 @@
 import { Type } from "class-transformer";
 import { IsDate, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { CompradorEntity } from "src/comprador/comprador.entity/comprador.entity";
+import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 
 export class ComentarioDto {
 
@@ -20,4 +22,10 @@ export class ComentarioDto {
     @IsNumber()
     readonly calificacion: number;
 
+    @IsNotEmpty()
+    producto: ProductoEntity;
+
+    @IsNotEmpty()
+    comprador: CompradorEntity;
+    
 }

@@ -3,13 +3,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ComentarioEntity } from './comentario.entity/comentario.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { CompradorEntity } from 'src/comprador/comprador.entity/comprador.entity';
+import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 
 @Injectable()
 export class ComentarioService {
 
     constructor(
         @InjectRepository(ComentarioEntity)
-        private readonly comentarioRepository: Repository<ComentarioEntity>
+        private readonly comentarioRepository: Repository<ComentarioEntity>,
+        @InjectRepository(CompradorEntity)
+        private readonly compradorRepository: Repository<CompradorEntity>,
+        @InjectRepository(ProductoEntity)
+        private readonly productoRepository: Repository<ProductoEntity>
     ){}
 
     async findAll(): Promise<ComentarioEntity[]> {
@@ -24,6 +30,15 @@ export class ComentarioService {
     }
 
     async create(comentario: ComentarioEntity): Promise<ComentarioEntity> {
+
+        const comprador: CompradorEntity = await this.compradorRepository.findOne({where: {id: comentario.comprador.id}} );
+        if (!comprador)
+            throw new BusinessLogicException("The comprador with the given id was not found", BusinessError.NOT_FOUND);
+
+        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: comentario.producto.id}} );
+        if (!producto)
+            throw new BusinessLogicException("The producto with the given id was not found", BusinessError.NOT_FOUND);
+
         return await this.comentarioRepository.save(comentario);
     }
 
