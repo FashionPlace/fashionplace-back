@@ -1,15 +1,20 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UbicacionSucursalEntity } from './ubicacionSucursal.entity/ubicacionSucursal.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { UbicacionEntity } from 'src/ubicacion/ubicacion.entity/ubicacion.entity';
 
 @Injectable()
 export class UbicacionSucursalService {
 
     constructor(
         @InjectRepository(UbicacionSucursalEntity)
-        private readonly ubicacionSucursalRepository: Repository<UbicacionSucursalEntity>
+        private readonly ubicacionSucursalRepository: Repository<UbicacionSucursalEntity>,
+        
+        @InjectRepository(UbicacionEntity)
+        private readonly ubicacionRepository: Repository<UbicacionEntity>
     ){}
 
     async findAll(): Promise<UbicacionSucursalEntity[]> {
@@ -24,7 +29,15 @@ export class UbicacionSucursalService {
     }
 
     async create(ubicacionSucursal: UbicacionSucursalEntity): Promise<UbicacionSucursalEntity> {
-        return await this.ubicacionSucursalRepository.save(ubicacionSucursal);
+        const savedubicacionSucursal: UbicacionSucursalEntity = await this.ubicacionSucursalRepository.save(ubicacionSucursal);
+        const ubicacion = new UbicacionEntity();
+        ubicacion.id = savedubicacionSucursal.id;
+        ubicacion.pais = savedubicacionSucursal.pais;
+        ubicacion.ciudad = savedubicacionSucursal.ciudad;
+        ubicacion.direccion = savedubicacionSucursal.direccion;
+        ubicacion.adicional = savedubicacionSucursal.adicional;
+        await this.ubicacionRepository.save(ubicacion);
+        return savedubicacionSucursal
     }
 
     async update(id: string, ubicacionSucursal: UbicacionSucursalEntity): Promise<UbicacionSucursalEntity> {

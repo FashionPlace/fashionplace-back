@@ -4,13 +4,17 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DireccionUsuarioEntity } from './direccionUsuario.entity/direccionUsuario.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { UbicacionEntity } from 'src/ubicacion/ubicacion.entity/ubicacion.entity';
 
 @Injectable()
 export class DireccionUsuarioService {
 
     constructor(
         @InjectRepository(DireccionUsuarioEntity)
-        private readonly direccionUsuarioRepository: Repository<DireccionUsuarioEntity>
+        private readonly direccionUsuarioRepository: Repository<DireccionUsuarioEntity>,
+
+        @InjectRepository(UbicacionEntity)
+        private readonly ubicacionRepository: Repository<UbicacionEntity>
     ){}
 
     async findAll(): Promise<DireccionUsuarioEntity[]> {
@@ -25,7 +29,15 @@ export class DireccionUsuarioService {
     }
 
     async create(direccionUsuario: DireccionUsuarioEntity): Promise<DireccionUsuarioEntity> {
-        return await this.direccionUsuarioRepository.save(direccionUsuario);
+        const savedDireccionUsuario: DireccionUsuarioEntity = await this.direccionUsuarioRepository.save(direccionUsuario);
+        const ubicacion = new UbicacionEntity();
+        ubicacion.id = savedDireccionUsuario.id;
+        ubicacion.pais = savedDireccionUsuario.pais;
+        ubicacion.ciudad = savedDireccionUsuario.ciudad;
+        ubicacion.direccion = savedDireccionUsuario.direccion;
+        ubicacion.adicional = savedDireccionUsuario.adicional;
+        await this.ubicacionRepository.save(ubicacion);
+        return savedDireccionUsuario;
     }
 
     async update(id: string, direccionUsuario: DireccionUsuarioEntity): Promise<DireccionUsuarioEntity> {
