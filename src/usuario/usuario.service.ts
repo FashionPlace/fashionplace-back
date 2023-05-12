@@ -1,15 +1,20 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario.entity/usuario.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { DireccionUsuarioEntity } from '../direccionUsuario/direccionUsuario.entity/direccionUsuario.entity';
 
 @Injectable()
 export class UsuarioService {
 
     constructor(
         @InjectRepository(UsuarioEntity)
-        private readonly usuarioRepository: Repository<UsuarioEntity>
+        private readonly usuarioRepository: Repository<UsuarioEntity>,
+
+        @InjectRepository(DireccionUsuarioEntity)
+        private readonly direccionUsuarioRepository: Repository<DireccionUsuarioEntity>
     ){}
 
     async findAll(): Promise<UsuarioEntity[]> {
@@ -24,6 +29,11 @@ export class UsuarioService {
     }
 
     async create(usuario: UsuarioEntity): Promise<UsuarioEntity> {
+
+        const direccionUsuario: DireccionUsuarioEntity = await this.direccionUsuarioRepository.findOne({where: {id: usuario.direccion.id} } );
+        if (!direccionUsuario)
+            throw new BusinessLogicException("The direccionUsuario with the given id was not found", BusinessError.NOT_FOUND);
+
         return await this.usuarioRepository.save(usuario);
     }
 
@@ -32,6 +42,11 @@ export class UsuarioService {
         if (!persistedUsuario)
           throw new BusinessLogicException("The usuario with the given id was not found", BusinessError.NOT_FOUND);
         
+        const direccionUsuario: DireccionUsuarioEntity = await this.direccionUsuarioRepository.findOne({where: {id: usuario.direccion.id} } );
+        if (!direccionUsuario)
+            throw new BusinessLogicException("The direccionUsuario with the given id was not found", BusinessError.NOT_FOUND);
+  
+
         return await this.usuarioRepository.save({...persistedUsuario, ...usuario});
     }
 
