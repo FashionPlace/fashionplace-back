@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsString, IsUrl } from "class-validator";
+import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
 
 export class ColeccionDto {
 
@@ -13,5 +14,8 @@ export class ColeccionDto {
     @IsNotEmpty()
     @IsUrl()
     readonly imagen: string;
+
+    @IsNotEmpty()
+    productos: ProductoEntity[];
 
 }

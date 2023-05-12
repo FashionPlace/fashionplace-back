@@ -3,13 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ColeccionEntity } from './coleccion.entity/coleccion.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 
 @Injectable()
 export class ColeccionService {
 
     constructor(
         @InjectRepository(ColeccionEntity)
-        private readonly coleccionRepository: Repository<ColeccionEntity>
+        private readonly coleccionRepository: Repository<ColeccionEntity>,
+        @InjectRepository(ProductoEntity)
+        private readonly productoRepository: Repository<ProductoEntity>
     ){}
 
     async findAll(): Promise<ColeccionEntity[]> {
@@ -24,6 +27,13 @@ export class ColeccionService {
     }
 
     async create(coleccion: ColeccionEntity): Promise<ColeccionEntity> {
+
+        for(let producto of coleccion.productos){
+            const persistedProducto: ProductoEntity = await this.productoRepository.findOne({where:{id: producto.id}});
+            if (!persistedProducto)
+                throw new BusinessLogicException("The producto with the given id was not found", BusinessError.NOT_FOUND);
+        }
+
         return await this.coleccionRepository.save(coleccion);
     }
 
