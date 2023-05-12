@@ -45,6 +45,7 @@ import { UbicacionSucursalEntity } from 'src/ubicacionSucursal/ubicacionSucursal
 import { UsuarioEntity } from 'src/usuario/usuario.entity/usuario.entity';
 import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
 import { LoginModule } from './login/login.module';
+import { EmpresaProductoModule } from './empresa-producto/empresa-producto.module';
 
 @Module({
   imports: [
@@ -104,6 +105,7 @@ import { LoginModule } from './login/login.module';
       keepConnectionAlive: true
     }),
     LoginModule,
+    EmpresaProductoModule,
   
   ],
   controllers: [AppController],
