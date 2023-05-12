@@ -1,11 +1,208 @@
 {
 	"info": {
-		"_postman_id": "bcfa56ae-1ded-466d-966c-e044f28a0dd1",
+		"_postman_id": "dabee741-0e8a-4222-bbad-5e5459ded55d",
 		"name": "Visita",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25894623"
 	},
 	"item": [
+		{
+			"name": "Create Empresa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_empresa\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Empresa\",\r\n    \"documento\": \"23421\",\r\n    \"contrasenia\": \"empresa123\",\r\n    \"email\": \"empresa@hola.com\",\r\n    \"emailRespaldo\": \"empresa@chao.com\",\r\n    \"celular\": \"2093021\",\r\n    \"descripcion\": \"Tienda comercial de X\",\r\n    \"plan\": \"Basico\",\r\n    \"foto\": \"https://media.discordapp.net/attachments/1106248038705528832/1106248118934188152/Clothes.jpg?width=830&height=671\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/empresas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"empresas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_sucursal\",data.id);\r",
+							"postman.setGlobalVariable(\"id_ubicacion\",data.ubicacion.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empresa\": {\r\n        \"id\": \"{{id_empresa}}\"\r\n    },\r\n    \"ubicacion\": {\r\n        \"pais\": \"Colombia\",\r\n        \"ciudad\": \"Bogota\",\r\n        \"direccion\": \"carrera 51 #45-11\",\r\n        \"adicional\": \"Centro Comercial ssan Miguel\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sucursales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sucursales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comprador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_compradores\",data.id);\r",
+							"postman.setGlobalVariable(\"id_carrito\",data.carrito.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"documento\": \"2144324\",\r\n    \"contrasenia\": \"carlos123\",\r\n    \"email\": \"carlos@hola.com\",\r\n    \"emailRespaldo\": \"carlos@chao.com\",\r\n    \"celular\": \"313414\",\r\n    \"foto\": \"https://media.discordapp.net/attachments/1106248038705528832/1106248258466095216/Senora.jpg?width=671&height=671\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/compradores",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"compradores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create ImagenProducto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_imagen\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"url\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/imagen-productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"imagen-productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"id_producto\",data.id);\r",
+							"tests[\"Post doesnt generate error\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Chaqueta\",\r\n    \"descripcion\": \"Chaqueta super crack\",\r\n    \"precio\": 23000,\r\n    \"unidadesDisponibles\": 11,\r\n    \"descuento\": 0,\r\n    \"sucursales\": [\r\n        { \"id\": \"{{id_sucursal}}\" }\r\n    ],\r\n    \"imagenes\": [\r\n        { \"id\": \"{{id_imagen}}\" }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Create Visita",
 			"event": [
@@ -26,7 +223,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fecha\": \"2023-04-13\"\r\n}",
+					"raw": "{\r\n    \"fecha\": \"2023-04-13\",\r\n    \"comprador\": { \"id\": \"{{id_compradores}}\" },\r\n    \"producto\": { \"id\": \"{{id_producto}}\" }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
