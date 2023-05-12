@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsString } from "class-validator";
+import { EmpresaEntity } from "src/empresa/empresa.entity/empresa.entity";
 
 export class MetodoContactoDto {
 
@@ -14,5 +15,8 @@ export class MetodoContactoDto {
     @IsNotEmpty()
     @IsString()
     readonly logo: number;
+
+    @IsNotEmpty()
+    empresa: EmpresaEntity;
     
 }
