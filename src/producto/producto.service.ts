@@ -3,13 +3,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ProductoEntity } from './producto.entity/producto.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { SucursalEntity } from 'src/sucursal/sucursal.entity/sucursal.entity';
+import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
 
 @Injectable()
 export class ProductoService {
 
     constructor(
         @InjectRepository(ProductoEntity)
-        private readonly productoRepository: Repository<ProductoEntity>
+        private readonly productoRepository: Repository<ProductoEntity>,
+        @InjectRepository(SucursalEntity)
+        private readonly sucursalRepository: Repository<SucursalEntity>,
+        @InjectRepository(ImagenProductoEntity)
+        private readonly imagenProductoRepository: Repository<ImagenProductoEntity>
     ){}
 
     async findAll(): Promise<ProductoEntity[]> {
@@ -24,6 +30,19 @@ export class ProductoService {
     }
 
     async create(producto: ProductoEntity): Promise<ProductoEntity> {
+
+        for(let sucursal of producto.sucursales){
+            const persistedSucursal: SucursalEntity = await this.sucursalRepository.findOne({where:{id: sucursal.id}});
+            if (!persistedSucursal)
+                throw new BusinessLogicException("The sucursal with the given id was not found", BusinessError.NOT_FOUND);
+        }
+
+        for(let imagen of producto.imagenes){
+            const persistedImagen: ImagenProductoEntity = await this.imagenProductoRepository.findOne({where:{id: imagen.id}});
+            if (!persistedImagen)
+                throw new BusinessLogicException("The imagen with the given id was not found", BusinessError.NOT_FOUND);
+        }
+
         return await this.productoRepository.save(producto);
     }
 
