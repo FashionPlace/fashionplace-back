@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -70,6 +71,8 @@ import { EmpresaProductoModule } from './empresa-producto/empresa-producto.modul
     ImagenModule, 
     ImagenProductoModule, 
     UbicacionSucursalModule,
+    LoginModule,
+    EmpresaProductoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -104,9 +107,6 @@ import { EmpresaProductoModule } from './empresa-producto/empresa-producto.modul
       synchronize: true,
       keepConnectionAlive: true
     }),
-    LoginModule,
-    EmpresaProductoModule,
-  
   ],
   controllers: [AppController],
   providers: [AppService],
