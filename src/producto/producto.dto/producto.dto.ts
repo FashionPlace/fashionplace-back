@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { SucursalEntity } from "src/sucursal/sucursal.entity/sucursal.entity";
 
 export class ProductoDto {
 
@@ -18,9 +19,12 @@ export class ProductoDto {
     @IsNotEmpty()
     @IsNumber()
     readonly unidadesDisponibles: number;
+
+    @IsNotEmpty()
+    readonly sucursales: SucursalEntity[];
     
     @IsNumber()
     @IsOptional()
     readonly descuento: number;
-
+    
 }
