@@ -3,13 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { GraficaEntity } from './grafica.entity/grafica.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 
 @Injectable()
 export class GraficaService {
 
     constructor(
         @InjectRepository(GraficaEntity)
-        private readonly graficaRepository: Repository<GraficaEntity>
+        private readonly graficaRepository: Repository<GraficaEntity>,
+        @InjectRepository(EmpresaEntity)
+        private readonly empresaRepository: Repository<EmpresaEntity>
     ){}
 
     async findAll(): Promise<GraficaEntity[]> {
@@ -24,6 +27,11 @@ export class GraficaService {
     }
 
     async create(grafica: GraficaEntity): Promise<GraficaEntity> {
+
+        const empresa: EmpresaEntity = await this.empresaRepository.findOne({where: {id: grafica.empresa.id}});
+        if(!empresa)
+            throw new BusinessLogicException("La empresa vinculada a la sucursal debe existir", BusinessError.PRECONDITION_FAILED);
+
         return await this.graficaRepository.save(grafica);
     }
 
