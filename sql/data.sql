@@ -44,3 +44,10 @@ insert into imagen_producto_entity values ('43aa005a-ed1c-4ece-80a3-60655271a6e4
 insert into imagen_producto_entity values ('62f1b3d8-6d8e-41fc-9562-020671c08fdb', 'https://media.discordapp.net/attachments/1107081638497767536/1107087547684884621/Blusa_Mujer.jpg?width=662&height=662', '34ef7d9f-d71f-438f-a8a0-5c8b8cd1b6be');
 insert into imagen_producto_entity values ('5dfe1b0d-d6ab-4b32-8eaa-437b3bb81c8a', 'https://media.discordapp.net/attachments/1107081638497767536/1107087550125981757/Chaqueta_Acolchada.jpg?width=662&height=662', 'd605abc9-2212-489a-9a6f-230c93f0d096');
 insert into imagen_producto_entity values ('cbe33e94-7e59-4707-a739-1afbbad748de', 'https://media.discordapp.net/attachments/1107081638497767536/1107087548167241789/Camisa_Algodon.jpg?width=662&height=662', 'ea29def7-b0f4-4fed-ba8a-551563cdecd2');
+
+-------------------------------------------------------- PRODUCTOS SUCURSALES ------------------------------------------------------
+insert into producto_entity_sucursales_sucursal_entity values ('0aba4c8b-feb2-4669-ae7b-d5a91004219a', '0083c2b7-b0b7-4cd4-ad74-8e74cd642416');
+insert into producto_entity_sucursales_sucursal_entity values ('24d2063d-44fe-42a6-a271-d53ea83c569e', '7810b2d4-d24a-41b8-955f-c62e3af9edd9');
+insert into producto_entity_sucursales_sucursal_entity values ('34ef7d9f-d71f-438f-a8a0-5c8b8cd1b6be', '1334bed3-1bdf-47a7-bfcf-28d1ecfeb028');
+insert into producto_entity_sucursales_sucursal_entity values ('d605abc9-2212-489a-9a6f-230c93f0d096', '9ac4d994-c297-48ab-baf7-4522160ba55e');
+insert into producto_entity_sucursales_sucursal_entity values ('ea29def7-b0f4-4fed-ba8a-551563cdecd2', '4bb9728c-cf4c-48b7-bc7b-0a175b144768');

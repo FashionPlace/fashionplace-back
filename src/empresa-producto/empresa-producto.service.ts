@@ -21,14 +21,22 @@ export class EmpresaProductoService {
         if (!empresa)
           throw new BusinessLogicException("The empresa with the given id was not found", BusinessError.NOT_FOUND)
 
-        const productos: ProductoEntity[] = await this.productoRepository.find({where: {sucursales: empresa.sucursales}, relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"]});
+        const productos: ProductoEntity[] = await this.productoRepository.find({relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"]});
+        const sucursales = empresa.sucursales;
         const uniqueProductNames = [];
-        const productosUnicos: ProductoEntity[] = productos.filter(producto => { 
-            if (uniqueProductNames.includes(producto.nombre)) {
-                return false;
-            } else {
-                uniqueProductNames.push(producto.nombre)
-                return true
+        const productosUnicos: ProductoEntity[] = productos.filter(producto => {
+            let pasa = false;
+            for(let sucursal of sucursales){
+                if(producto.sucursales[0].id == sucursal.id)
+                    pasa = true;
+            }
+            if(pasa) {
+                if (uniqueProductNames.includes(producto.nombre)) {
+                    return false;
+                } else {
+                    uniqueProductNames.push(producto.nombre)
+                    return true
+                }
             }
         });
         return productosUnicos;
