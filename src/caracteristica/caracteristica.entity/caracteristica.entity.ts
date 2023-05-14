@@ -16,6 +16,4 @@ export class CaracteristicaEntity {
     @ManyToMany(() => TagEntity, tag => tag.caracteristicas)
     tags: TagEntity[];
 
-    @ManyToMany(() => ProductoEntity, producto => producto.caracteristicas)
-    productos: ProductoEntity[];
 }

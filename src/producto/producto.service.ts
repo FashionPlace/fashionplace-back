@@ -19,11 +19,11 @@ export class ProductoService {
     ){}
 
     async findAll(): Promise<ProductoEntity[]> {
-        return await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"] });
+        return await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "tags"] });
     }
 
     async findOne(id: string): Promise<ProductoEntity> {
-        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"] } );
+        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "tags"] } );
         if (!producto)
           throw new BusinessLogicException("The producto with the given id was not found", BusinessError.NOT_FOUND);
         return producto;
@@ -64,7 +64,7 @@ export class ProductoService {
 
     /****** Extras */
     async getFeaturedItems(): Promise<ProductoEntity[]> {
-        const productos: ProductoEntity[] = await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"] });
+        const productos: ProductoEntity[] = await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "tags"] });
         return productos.slice(0, 3);
     }
 

@@ -6,6 +6,7 @@ import { ComentarioEntity } from 'src/comentario/comentario.entity/comentario.en
 import { CompraProductoEntity } from 'src/compraProducto/compraProducto.entity/compraProducto.entity';
 import { ImagenProductoEntity } from 'src/imagenProducto/imagenProducto.entity/imagenProducto.entity';
 import { SucursalEntity } from 'src/sucursal/sucursal.entity/sucursal.entity';
+import { TagEntity } from 'src/tag/tag.entity/tag.entity';
 import { VisitaEntity } from 'src/visita/visita.entity/visita.entity';
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -53,8 +54,8 @@ export class ProductoEntity {
     @JoinTable()
     colecciones: ColeccionEntity[];
 
-    @ManyToMany(() => CaracteristicaEntity, caracteristica => caracteristica.productos)
+    @ManyToMany(() => TagEntity, tag => tag.productos)
     @JoinTable()
-    caracteristicas: CaracteristicaEntity[];
+    tags: TagEntity[];
 
 }

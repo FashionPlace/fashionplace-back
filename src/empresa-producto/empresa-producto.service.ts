@@ -21,7 +21,7 @@ export class EmpresaProductoService {
         if (!empresa)
           throw new BusinessLogicException("The empresa with the given id was not found", BusinessError.NOT_FOUND)
 
-        const productos: ProductoEntity[] = await this.productoRepository.find({relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"]});
+        const productos: ProductoEntity[] = await this.productoRepository.find({relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "tags"]});
         const sucursales = empresa.sucursales;
         const uniqueProductNames = [];
         const productosUnicos: ProductoEntity[] = productos.filter(producto => {
