@@ -11,12 +11,12 @@ export class ProductoController {
 
     constructor(private readonly productoService: ProductoService) {}
 
-    @Get()
+    @Get('/list')
     async findAll() {
         return await this.productoService.findAll();
     }
 
-    @Get(':productoId')
+    @Get('/detail/:productoId')
     async findOne(@Param('productoId') productoId: string) {
         return await this.productoService.findOne(productoId);
     }
@@ -37,5 +37,12 @@ export class ProductoController {
     @HttpCode(204)
     async delete(@Param('productoId') productoId: string) {
         return await this.productoService.delete(productoId);
-    }    
+    }
+    
+    /*** Extras */
+
+    @Get('/featured')
+    async getFeaturedItems() {
+        return await this.productoService.getFeaturedItems();
+    }
 }

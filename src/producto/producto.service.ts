@@ -62,4 +62,10 @@ export class ProductoService {
         await this.productoRepository.remove(producto);
     }
 
+    /****** Extras */
+    async getFeaturedItems(): Promise<ProductoEntity[]> {
+        const productos: ProductoEntity[] = await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "caracteristicas"] });
+        return productos.slice(0, 3);
+    }
+
 }
