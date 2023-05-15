@@ -68,4 +68,18 @@ export class ProductoService {
         return productos.slice(0, 3);
     }
 
+    async getTagProducts(clase: string): Promise<ProductoEntity[]> {
+        console.log(clase);
+        const productos: ProductoEntity[] = await this.productoRepository.find({ relations: ["sucursales", "carritoProductos", "compraProductos", "visitas", "imagenes", "comentarios", "colecciones", "tags"] });
+        const productosTags: ProductoEntity[] = productos.filter(producto => {
+            for(let tag of producto.tags){
+                if(tag.nombre == clase) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        return productosTags;
+    }
+
 }

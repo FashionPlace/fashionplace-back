@@ -45,4 +45,9 @@ export class ProductoController {
     async getFeaturedItems() {
         return await this.productoService.getFeaturedItems();
     }
+
+    @Get('/ia/:clase')
+    async getTagProducts(@Param('clase') clase: string) {
+        return await this.productoService.getTagProducts(clase);
+    }
 }
