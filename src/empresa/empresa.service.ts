@@ -36,13 +36,13 @@ export class EmpresaService {
     async create(empresa: EmpresaEntity): Promise<EmpresaEntity> {
         const allCompradores: CompradorEntity[] = await this.compradorRepository.find();
         const allEmpresas: EmpresaEntity[] = await this.empresaRepository.find();
-        if(allCompradores.find(u => {u.email == (empresa.email) || u.documento == (empresa.documento)}))
+        if(allCompradores.find(u => u.email == (empresa.email) || u.documento == (empresa.documento)))
             throw new BusinessLogicException("Email no disponible: " + empresa.email, BusinessError.PRECONDITION_FAILED);
-        if(allEmpresas.find(e => {e.email == empresa.email}))
+        if(allEmpresas.find(e => e.email == empresa.email))
             throw new BusinessLogicException("Email no disponible: " + empresa.email, BusinessError.PRECONDITION_FAILED);
         if(allCompradores.find(u => u.documento == (empresa.documento)))
             throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + empresa.documento, BusinessError.PRECONDITION_FAILED);
-        if(allEmpresas.find(e => {e.documento == empresa.documento}))
+        if(allEmpresas.find(e => e.documento == empresa.documento))
             throw new BusinessLogicException("Ya existe un usuario registrado con ese documento: " + empresa.documento, BusinessError.PRECONDITION_FAILED);
         
         const direccionUsuario: DireccionUsuarioEntity = await this.direccionUsuarioRepository.findOne({where: {id: empresa.direccion.id} } );
