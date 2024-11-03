@@ -48,7 +48,7 @@ export class ColeccionService {
     async delete(id: string) {
         const coleccion: ColeccionEntity = await this.coleccionRepository.findOne({where:{id}});
         if (!coleccion)
-          throw new BusinessLogicException("The coleccion with the given id was not founddd", BusinessError.NOT_FOUND);
+          throw new BusinessLogicException("The coleccion with the given id was not found", BusinessError.NOT_FOUND);
      
         await this.coleccionRepository.remove(coleccion);
     }
