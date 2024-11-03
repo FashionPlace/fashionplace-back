@@ -32,8 +32,6 @@ export class SucursalService {
 
     async create(sucursal: SucursalEntity): Promise<SucursalEntity> {
         
-        //TODO Check if the ubcacion of a created sucursal corresponds to the ubicacion of the actual sucursal
-        
         //Se obtiene la empresa a la que se va a vincular
         const empresa: EmpresaEntity = await this.empresaRepository.findOne({where: {id: sucursal.empresa.id}, relations: ["sucursales"]});
         if(!empresa)
@@ -41,6 +39,11 @@ export class SucursalService {
         
         const savedUbicacionSucursal: UbicacionSucursalEntity = await this.ubicacionSucursalRepository.save(sucursal.ubicacion);
         sucursal.ubicacion = savedUbicacionSucursal;
+
+        for (const sucursalEmpresa of empresa.sucursales) {
+            if(sucursalEmpresa.ubicacion == sucursal.ubicacion)
+                throw new BusinessLogicException("Ya existe una sucursal en esa ubicación", BusinessError.PRECONDITION_FAILED);
+        }
 
         const savedSucursal: SucursalEntity = await this.sucursalRepository.save(sucursal)
         empresa.sucursales = [...empresa.sucursales, savedSucursal];
