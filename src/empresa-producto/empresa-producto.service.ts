@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { EmpresaEntity } from 'src/empresa/empresa.entity/empresa.entity';
 import { ProductoEntity } from 'src/producto/producto.entity/producto.entity';
 import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
-import { Repository, Unique } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class EmpresaProductoService {
