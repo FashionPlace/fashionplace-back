@@ -40,7 +40,7 @@ export class ColeccionService {
     async update(id: string, coleccion: ColeccionEntity): Promise<ColeccionEntity> {
         const persistedColeccion: ColeccionEntity = await this.coleccionRepository.findOne({where:{id}});
         if (!persistedColeccion)
-          throw new BusinessLogicException("The coleccion with the given id was nooot found", BusinessError.NOT_FOUND);
+          throw new BusinessLogicException("The coleccion with the given id was not found", BusinessError.NOT_FOUND);
         
         return await this.coleccionRepository.save({...persistedColeccion, ...coleccion});
     }
