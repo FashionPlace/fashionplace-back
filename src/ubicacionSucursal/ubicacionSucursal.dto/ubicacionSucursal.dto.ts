@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsString } from "class-validator";
-import { SucursalDto } from "src/sucursal/sucursal.dto/sucursal.dto";
 
 export class UbicacionSucursalDto {
     @IsNotEmpty()
