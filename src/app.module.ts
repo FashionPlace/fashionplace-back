@@ -77,9 +77,9 @@ import { EmpresaProductoModule } from './empresa-producto/empresa-producto.modul
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'fashionPlace',
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       entities: [
         UbicacionEntity,
         DireccionUsuarioEntity,
