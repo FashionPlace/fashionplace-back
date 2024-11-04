@@ -1,5 +1,5 @@
 import { ProductoEntity } from "src/producto/producto.entity/producto.entity";
-import { Column, Entity, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ColeccionEntity {

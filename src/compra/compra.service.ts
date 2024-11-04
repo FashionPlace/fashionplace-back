@@ -31,11 +31,12 @@ export class CompraService {
     async create(compra: CompraEntity): Promise<CompraEntity> {
 
         const comprador: CompradorEntity = await this.compradorRepository.findOne({where: {id: compra.comprador.id} } );
-        if (!comprador)
+        if (!comprador) {
             throw new BusinessLogicException("The comprador with the given id was not found", BusinessError.NOT_FOUND);
-            
-            return await this.compraRepository.save(compra);
-        }
+        }    
+
+        return await this.compraRepository.save(compra);
+    }
         
         async update(id: string, compra: CompraEntity): Promise<CompraEntity> {
             const persistedCompra: CompraEntity = await this.compraRepository.findOne({where:{id}});
